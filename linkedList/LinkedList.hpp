@@ -105,11 +105,18 @@ bool LinkedList<T>::removeBack()
 	Node<T>* secondintoLast = nullptr;
 	bool isRemoved = false;
 
-	lastNode = m_front;
-    while(nullptr != lastNode)
+    // Check if the list is empty
+    if(nullptr != m_front)
     {
+        lastNode = m_front;
         secondintoLast = lastNode;
-        lastNode = lastNode->getNext();
+
+        // Iterate until we reach the back of the list
+        while(nullptr != lastNode->getNext())
+        {
+            secondintoLast = lastNode;
+            lastNode = lastNode->getNext();
+        }
     }
 
     if(nullptr != secondintoLast)
